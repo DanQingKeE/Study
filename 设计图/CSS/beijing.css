@@ -149,9 +149,32 @@ section h5{
 .sectionContent img{
     margin: 15px;
 }
-.teacher img{
+.teacher{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+.member{
+    position: relative;
+    overflow: hidden;
     width: 400px;
     height: 300px;
+    margin: 20px;
+}
+.mask{
+    margin: 20px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+.sectionContent .member:hover .mask{
+    transform: translateY(-340px);
+    background: rgba(0,0,0,0.5);
+}
+.sectionContent .teacher .member a img{
+    width: 100%;
+    height: 100%;
 }
 .form1{
     width: 400px;
