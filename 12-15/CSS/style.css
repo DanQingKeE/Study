@@ -10,6 +10,9 @@ html,body{
     margin: 0;
     overflow:hidden;
 }
+*::-webkit-scrollbar{
+    display: none;
+}
 img{
     margin-top:15px;
     margin-left:15px;
@@ -27,23 +30,23 @@ img{
 }
 .bottom{
     width: 19%;
-    overflow: hidden;
     position: fixed;
     bottom: 0;
 }
 .bottom #size{
-    width:200px;
-    margin-left: 25px;
-    margin-bottom: 0;
+    margin: 0;
+    position: relative;
+    width:180px;
 }
 .blue{
     width: 19%;
     height: 100%;
     background-color: #222c3c;
     float: left;
-    overflow: hidden;
+    overflow: auto;
 }
 .blue .blue-list{
+    height: 100%;
     margin: 0px 30px 0 30px;
     font-size: 13px;
 }
@@ -59,7 +62,7 @@ img{
     display: inline-block;
 }
 .blue .blue-list .ul-list li{
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 .blue .blue-list .ul-list li .set img{
     width: 25px;
@@ -80,8 +83,10 @@ img{
 }
 .white .letf, .right{
     clear: both;
+
 }
 .white header{
+    position: relative;
     width: 100%;
     height: 80px;
     border-bottom: 1px solid #b3bcc9;
@@ -95,8 +100,7 @@ img{
 }
 .white header .user{
     width: 250px;
-    position: fixed;
-    right: 0;
+    float: right;
     background-color: #fff;
 }
 .white header .user .userimg{
@@ -128,8 +132,16 @@ img{
     font: 13px sans-serif;
     color: #c9c9c9;
 }
+.white section{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
 .white .letf{
     width: 350px;
+    height: 100%;
 }
 .white .letf .serch{
     width: 350px;
@@ -153,10 +165,11 @@ img{
 }
 .white .letf .friends{
     width: 350px;
-    height: 150px;
-    overflow: hidden;
+    height: 100%;
+    overflow: auto;
     border-right: 1px solid #b3bcc9;
     border-bottom: 1px solid #b3bcc9;
+
 }
 .white .letf .friends .friend img{
     float: left;
@@ -191,7 +204,7 @@ img{
     color: #8e9cae;
 }
 .white .letf .friends .friend p{
-    height: 40px;
+    height: 35px;
     width: 310px;
     font: 15px sans-serif;
     color: #585d68;
@@ -202,19 +215,14 @@ img{
     -webkit-box-orient: vertical;
     text-overflow:ellipsis;
 }
-.white .letf .friends .friend .call{
-    position: absolute;
-    top: 32%;
-    left: 48%;
-}
 .white .right{
-    padding: 0;
-    width: 645px;
-    margin-top: -810px;
+    position: relative;
+    width: 64%;
+    height: 100%;
 }
 .white .right .top{
     width:100%;
-    height: 60px;
+    height: 65px;
     border-bottom: 1px solid #b3bcc9;
 }
 .white .right .top h2{
@@ -248,18 +256,20 @@ img{
 }
 .white .right .content{
     width: 100%;
+    height: 100%;
+    overflow: auto;
 }
 .white .right .word{
     width: 100%;
-    min-height: 110px;
+    min-height: 150px;
 }
-.white .right .content img, article{
+.white .right .content img{
     float: left;
 }
 .white .right .content article{
-    width: 550px;
-    margin-left: 15px;
-    margin-top: 0px;
+    float: right;
+    width: 540px;
+    margin: 0;
 }
 .white .right .content article h2{
     font-size: 15px;
@@ -279,10 +289,10 @@ img{
     font-size: 13px;
 }
 .white .right .line{
-    margin: 20px 0;
+    margin: 50px 0;
     line-height: 1px;
-    border-left: 300px solid #ddd;
-    border-right: 250px solid #ddd;
+    border-left: 260px solid #ddd;
+    border-right: 260px solid #ddd;
     text-align: center;
 }
 .white .right .word button{
@@ -297,7 +307,7 @@ img{
     margin: 0;
 }
 .white .right .word input{
-    width: 550px;
+    width: 500px;
     height: 55px;
     float: left;
     margin-top: 20px;
@@ -306,7 +316,7 @@ img{
     width: 160px;
     height: 100px;
     display: inline-block;
-    margin: 0 10px;
+    margin-right: 20px;
     position: relative;
     overflow: hidden;
 }
