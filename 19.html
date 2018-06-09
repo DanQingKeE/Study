@@ -36,23 +36,41 @@
 <script>
 
     function getAllListItem() {
-        var a=new Array();
-        a=document.getElementsByTagName(li);
-        alert(a);// 返回页面中所有li标签
+        // 返回页面中所有li标签
+        return document.getElementsByTagName('li');
     }
 
     function findAllHtmlSpanInOneSection(sectionId) {
         // 返回某个section下所有span中内容为HTML的span标签
+        const section = document.getElementById(sectionId);
+        var a= section.getElementsByTagName("span");
+        return a.childNodes.nodename;
     }
 
     function findListItem(sectionId, spanCont) {
         // 返回某个section下，所有所包含span内容为spanCont的LI标签
+        const section = document.getElementById(sectionId);
+
+        return [].filter.call(section.getElementsByTagName('li'), (element) => {
+                return element.innerHTML.indexOf(`<span>${spanCont}</span>`) >= 0;
+    });
     }
 
     function getActiveLinkContent(sectionId) {
         // 返回某个section下，class为active的链接中包含的文字内容
+        const section = document.getElementById(sectionId);
+
+        return [].filter.call(section.getElementsByTagName('a'), (element) => {
+                return element.classList.contains('active');
+    }).map((element) => {
+            return element.innerText;
+    })
     }
 
+    console.log(getAllListItem());
+    console.log(findAllHtmlSpanInOneSection(sectionId));
+    console.log(findListItem(sectionId, spanCont));
+    console.log(getActiveLinkContent(sectionId));
 </script>
 </body>
 </html>
