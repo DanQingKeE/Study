@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="startTime()">
+    <div id="show"></div>
+</body>
+<script>
+    function startTime()
+    {
+        var today=new Date();
+        var y=today.getFullYear();
+        var mo=today.getMonth()+1;
+        var d=today.getDate();
+        var w=today.getDay();
+        var h=today.getHours();
+        var m=today.getMinutes();
+        var s=today.getSeconds();
+// add a zero in front of numbers<10
+        h=checkTime(h);
+        m=checkTime(m);
+        s=checkTime(s);
+        mo=checkTime(mo);
+        d=checkTime(d);
+        document.getElementById('show').innerHTML=y+"-"+mo+"-"+d+" "+day(w)+" "+h+":"+m+":"+s+" "+apm(h);
+        t=setTimeout('startTime()',500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }
+        return i
+    }
+    function  day(w) {
+        switch (w) {
+            case 0:
+                return "Sunday"
+                break;
+            case 1:
+                return "Monday"
+                break;
+            case 2:
+                return "Tuesday"
+                break;
+            case 3:
+                return "Wednesday"
+                break;
+            case 4:
+                return "Thursday"
+                break;
+            case 5:
+                return "Friday"
+                break;
+            case 6:
+                return "Saturday "
+                break;
+        }
+    }
+        function apm(h) {
+            if(h<12){
+                return "AM";
+            }
+            else {
+                return "PM";
+            }
+        }
+</script>
+</html>
