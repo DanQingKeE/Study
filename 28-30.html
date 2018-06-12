@@ -5,10 +5,6 @@
     <title>Title</title>
 </head>
 <style>
-    .wrapper{
-        width: 200px;
-        list-style: none;
-    }
     .wrapper input{
         width: 200px;
         height: 30px;
@@ -22,13 +18,15 @@
         width: 200px;
         border: 1px solid #c9c9c9;
         display: none;
+        list-style: none;
+        overflow: hidden;
     }
     li:hover{
         background-color: aqua;
         cursor: pointer;
     }
     .select{
-        background-color: #475364;
+        background-color: #ffafdb;
     }
 </style>
 <body>
@@ -38,15 +36,37 @@
     </div>
 </body>
 <script>
-    var postfixList = ['@163.com', '@gmail.com', '@126.com', '@qq.com', '@263.net'];
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
     var inp=document.getElementById("email-input");
     var u=document.getElementById("email-sug-wrapper");
+    var li=document.getElementsByTagName("li");
+    var nowSelectTipIndex = 0;
     inp.onkeyup=function (t) {
-        t=text();
-        tishi(t);
+        tishi(text);
         addlist();
         showlist();
-        var li=document.getElementsByTagName("li");
+        if(t.keyCode!=38&&t.keyCode!=40&&t.keyCode!=13){
+            reset();
+        }
+        if(t.keyCode === 38) {
+            if(nowSelectTipIndex === 0) {
+                nowSelectTipIndex = li.length - 1;
+            } else {
+                nowSelectTipIndex--;
+            }
+        }
+        if(t.keyCode === 40) {
+            if(nowSelectTipIndex === li.length - 1) {
+                nowSelectTipIndex = 0;
+            } else {
+                nowSelectTipIndex++;
+            }
+        }
+        if(t.keyCode===13){
+            inp.value=li[nowSelectTipIndex].innerHTML;
+            u.style.display="none";
+        }
+        li[nowSelectTipIndex].className="select";
         for(var i=0;i<li.length;i++){
             li[i].onclick=function () {
                 inp.value=this.innerHTML;
@@ -61,10 +81,11 @@
         t=text();
         var list="";
         if(t.indexOf("@")>-1){
+            t=t.substring(0,t.indexOf("@"));
             t=t.replace("@","");
         }
         for(var i=0;i<postfixList.length;i++){
-            list+="<li>"+t+postfixList[i]+"</li>";
+            list+="<li>"+t+"@"+postfixList[i]+"</li>";
         }
         return list;
     }
@@ -80,6 +101,8 @@
             u.style.display="block";
         }
     }
-
+    function  reset() {
+        nowSelectTipIndex=0;
+    }
 </script>
 </html>
