@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .wrapper{
+        width: 200px;
+        list-style: none;
+    }
+    .wrapper input{
+        width: 200px;
+        height: 30px;
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        margin: 0;
+        padding: 0;
+        height: 110px;
+        width: 200px;
+        border: 1px solid #c9c9c9;
+        display: none;
+    }
+    li:hover{
+        background-color: aqua;
+        cursor: pointer;
+    }
+    .select{
+        background-color: #475364;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+</body>
+<script>
+    var postfixList = ['@163.com', '@gmail.com', '@126.com', '@qq.com', '@263.net'];
+    var inp=document.getElementById("email-input");
+    var u=document.getElementById("email-sug-wrapper");
+    inp.onkeyup=function (t) {
+        t=text();
+        tishi(t);
+        addlist();
+        showlist();
+        var li=document.getElementsByTagName("li");
+        for(var i=0;i<li.length;i++){
+            li[i].onclick=function () {
+                inp.value=this.innerHTML;
+                u.style.display="none";
+            }
+        }
+    }
+    function text() {
+        return inp.value;
+    }
+    function tishi(t) {
+        t=text();
+        var list="";
+        if(t.indexOf("@")>-1){
+            t=t.replace("@","");
+        }
+        for(var i=0;i<postfixList.length;i++){
+            list+="<li>"+t+postfixList[i]+"</li>";
+        }
+        return list;
+    }
+    function addlist() {
+        var l=tishi();
+        u.innerHTML=l;
+    }
+    function showlist() {
+        if(text()==""){
+            u.style.display="none";
+        }
+        else {
+            u.style.display="block";
+        }
+    }
+
+</script>
+</html>
